@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -9,8 +8,12 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import skeleton from "react-loading-skeleton/dist/skeleton.css";
+import tailwind from "./tailwind.css";
+
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: tailwind },
+  { rel: "stylesheet", href: skeleton },
 ];
 
 export default function App() {
