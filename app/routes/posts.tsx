@@ -1,10 +1,15 @@
-import { Await, Outlet } from "@remix-run/react";
+import { Await, Outlet, defer, useLoaderData } from "@remix-run/react";
 import { PostType, getPosts } from "lib/jsonplaceholder";
 import { Suspense, lazy } from "react";
 import { LoadingPostsSkeleton, Posts } from "src/components/posts";
 
-export default function PostsPage() {
+export const loader = async () => {
   const postsPromise: Promise<PostType[]> = getPosts();
+  return defer({ postsPromise });
+};
+
+export default function PostsPage() {
+  const { postsPromise } = useLoaderData<typeof loader>();
 
   return (
     <div className="w-full max-h-screen p-2 flex flex-row gap-2">
