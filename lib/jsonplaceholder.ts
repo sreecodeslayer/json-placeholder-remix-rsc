@@ -54,9 +54,6 @@ export const getPosts = async () => {
     throw new Error("Failed to fetch");
   }
 
-  // sleep 2000
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
   return res.json();
 };
 
@@ -74,8 +71,6 @@ export const getPost = async (postId: string) => {
   if (!res.ok) {
     throw new Error("Failed to fetch");
   }
-  // sleep 2000
-  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   return res.json();
 };
@@ -94,8 +89,6 @@ export const getPostComments = async (postId: number) => {
   if (!res.ok) {
     throw new Error("Failed to fetch");
   }
-  // sleep 2000
-  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   return res.json();
 };
